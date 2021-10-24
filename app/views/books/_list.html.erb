@@ -1,3 +1,14 @@
+<div>
+  <h3>user info</h3>
+  <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+  <%= user.name %>
+  <%= user.introduction %>
+  <% if user.id == current_user.id %>
+    <p><%= link_to "User Info", edit_user_path(user) %></p>
+  <% end %>
+</div>
+
+
 <table>
   <thead>
     <tr>
@@ -5,3 +16,11 @@
       <td>Opinion</td>
     </tr>
   </thead>
+
+<h1>New Books</h1>
+<% if book.errors.any? %>
+    <%= book.errors.count %>errors prohibited this obj from being saved:
+    <% book.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+<% end %>

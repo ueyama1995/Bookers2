@@ -1,31 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<div>
-  <h3>user info</h3>
-  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-  <%= @user.name %>
-  <%= @user.introduction %>
-  <% if @user.id == current_user.id %>
-    <p><%= link_to "User Info", edit_user_path(@user) %></p>
-  <% end %>
-</div>
+<%= render 'books/list', book: @book,user: @user %>
 
-
-<table>
-  <thead>
-    <tr>
-      <td>Title</td>
-      <td>Opinion</td>
-    </tr>
-  </thead>
-
-<h1>New Books</h1>
-<% if @book.errors.any? %>
-            <%= @book.errors.count %>errors prohibited this obj from being saved:
-            <% @book.errors.full_messages.each do |message| %>
-              <%= message %>
-            <% end %>
-        <% end %>
 <%= form_with model: @book, local:true do |f| %>
   <h4>Title</h4>
   <%= f.text_field :title %>
@@ -45,3 +21,4 @@
     <% end %>
   </tbody>
 </table>
+
