@@ -1,8 +1,15 @@
+    <% if flash[:notice] %>
+     <p id="notice">
+       <%= flash[:notice] %>
+     </p>
+   <% end %>
+
 <div>
   <p>Title：<%= @book.title %></p>
   <p>Opinion：<%= @book.body %></p>
   <p>user：<%= @book.user_id %></p>
   <% if @book.user == current_user %>
-    <%= link_to "削除", book_path(@book), method: :delete %>
+  <td><%= link_to "Edit", edit_book_path(@book) %></td>
+  <td><%= link_to "Delete", book_path(@book), method: :delete, data: { confirm: "Are you sure?"} %></td>
   <% end %>
 </div>
