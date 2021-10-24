@@ -12,7 +12,7 @@
   <body>
     <% if user_signed_in? %>
       <li>
-        <%= link_to 'Book', new_book_path %>
+        <%= link_to 'Book', books_path %>
       </li>
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
