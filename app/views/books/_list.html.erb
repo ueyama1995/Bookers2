@@ -1,20 +1,31 @@
 <div>
+  <table>
+  <tbody>
   <h3>user info</h3>
-  <%= attachment_image_tag user, :profile_image, :fill, 63, 63, format: 'jpeg', fallback: "no_image.jpg" %>
-  <%= user.name %>
-  <%= user.introduction %>
-  <% if user.id == current_user.id %>
-    <p><%= link_to "", edit_user_path(user), class: "btn btn-outline-secondary btn-block fas fa-user-cog nav-link text-dark" %></p>
-
+  <tr></tr>
+  <tr><%= attachment_image_tag user, :profile_image, :fill, 63, 63, format: 'jpeg', fallback: "no_image.jpg" %>
+  <th>name</th>
+  <th><%= user.name %></th>
+  </tr>
+  <tr>
+  <th>introduction</th>
+  <th><%= user.introduction %></th>
+  </tr>
+  <tr>
+  <th><% if user.id == current_user.id %>
+    <p><%= link_to "", edit_user_path(user), class: "btn btn-outline-secondary btn-block fas fa-user-cog nav-link text-dark" %></p></th>
+    </tr>
   <% end %>
+  </tbody>
+  </table>
 </div>
 
 <h1>New book</h1>
 
 <%= form_with model: book, local:true do |f| %>
-  <h4>Title</h4>
+  <p>Title</p>
   <%= f.text_field :title %>
-  <h4>Opinion</h4>
+  <p>Opinion</p>
   <%= f.text_area :body %>
-  <%= f.submit 'Create Book' %>
+  <%= f.submit 'Create Book', class: "btn btn-sm btn-success" %>
 <% end %>

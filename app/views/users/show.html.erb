@@ -2,7 +2,7 @@
 
 
 
-  <div class="container">
+  <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3" >
       <%= render 'books/list', book: @book,user: @user %>
@@ -11,6 +11,15 @@
   <table>
       <h2>Books</h2>
     <table class="table table-hover table -inverse">
+      
+      <thead>
+        <tr>
+        <th></th>
+         <th>Title</th>
+         <th>Opinion</th>
+         </tr>
+      </thead>
+      
   <tbody>
     <% @books.each do |book| %>
       <tr>
