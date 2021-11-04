@@ -3,10 +3,8 @@
     <div class="col-md-3" >
       <%= render 'books/list', book: @book,user: @user %>
     </div>
-    <div class="col-md-8 offset-md-1">
-  <table>
 
-
+<div class="col-md-8 offset-md-1">
 <table>
   <table class="table">
   <thead>
@@ -16,16 +14,21 @@
       <td></td>
     </tr>
   </thead>
-
  <tbody>
-
     <% @users.each do |user| %>
-
       <tr>
         <td><%= attachment_image_tag user, :profile_image, size:'40x40', format: 'jpeg', fallback: "no_image.jpg" %></td>
         <td><%= user.name %></td>
+          <td>フォロー数: <%= user.followings.count %></td>
+          <td>フォロワー数: <%= user.followers.count %></td>
+        <td><% if current_user.following?(user) %>
+            <%= link_to "フォロー外す", user_relationships_path(user.id), method: :delete %>
+          <% else %>
+            <%= link_to "フォローする", user_relationships_path(user.id), method: :post %>
+          <% end %></td>
         <td><%= link_to  "Show", user_path(user) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+

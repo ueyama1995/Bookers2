@@ -7,10 +7,30 @@
           <th>name</th>
           <th><%= user.name %></th>
         </tr>
-        <tr>
+
           <th>introduction</th>
           <th><%= user.introduction %></th>
+
+         <tr>
+            <th>フォロー数:
+            </th>
+            <th>
+              <%= link_to  user_followings_path(user.id) do %>
+                <%= user.followings.count %>
+              <% end %>
+            </th>
         </tr>
+        <tr>
+            <th>フォロワー数:
+            </th>
+            <th>
+              <%= link_to user_followers_path(user.id) do %>
+                <%= user.followers.count %>
+              <% end %>
+            </th>
+        </tr>
+
+
       <tr>
       <th>
         <p><%= link_to "", edit_user_path(user), class: "btn btn-outline-secondary btn-block fas fa-user-cog nav-link text-dark" %></p></th>
