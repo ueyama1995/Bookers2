@@ -2,12 +2,14 @@ class SearchesController < ApplicationController
   def search
      @range = params[:range]
      search = params[:search]
-     word = params[:word]
+     @word = params[:word]
     if @range == '1'
-    @user = User.search(search,word)
+    @user = User.search(search,@word)
     #binding.pry
+    elsif @range == '2'
+    @book = Book.search(search,@word)
     else
-    @book = Book.search(search,word)
+      redirect_back(fallback_location: root_path)
     end
   end
 end
