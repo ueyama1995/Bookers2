@@ -37,20 +37,12 @@
         <% end %>
         <td><%= link_to book.title, book_path(book.id)%></td>
         <td><%= book.body %></td>
+        <td id="favorite_buttons_<%= book.id %>">
+           <%= render 'books/favorite', book: book %>
+        </td>
          <td>
-           <% if book.favorited_by?(current_user) %>
-                <p><%= link_to book_favorites_path(book), method: :delete, class:"text-danger" do %>
-                  ♥<%= book.favorites.count %>
-                <% end %>
-                </p>
-              <% else %>
-                <p><%= link_to book_favorites_path(book), method: :post do %>
-                  ♡<%= book.favorites.count %>
-                <% end %>
-                </p>
-            <% end %>
-        <div>
-         <td><%= "コメント数:#{book.book_comments.count}" %></td>
+           <%= "コメント数:#{book.book_comments.count}" %>
+         </td>
       </tr>
     <% end %>
   </tbody>
